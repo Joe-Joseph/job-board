@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { LeftContent } from '../components/LeftContent';
-import { LoginForm } from '../components/LoginForm';
-import { ToggleMode } from '../../../components/ToggleMode';
-import { SignupForm } from '../components/SignupForm';
-import { SignupSuccessCard } from '../components/SignupSuccessCard';
+import { LeftContent } from './components/LeftContent';
+import { LoginForm } from './components/LoginForm';
+import { ToggleMode } from '../../components/ToggleMode';
+import { SignupForm } from './components/SignupForm';
+import { SignupSuccessCard } from './components/SignupSuccessCard';
 
 export const LoginSignupPage = () => {
   const [isSignup, setIsSignup] = useState(false);

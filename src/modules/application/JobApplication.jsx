@@ -2,24 +2,24 @@ import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { SquareUser, Mail, MapPin, Link, CheckCircle } from 'lucide-react';
 
-import { TopBar } from '../../../../components/TopBar';
+import { TopBar } from '../../components/TopBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchJobDetails } from '../../../../store/slice/jobDetailsSlice';
-import { InputField } from '../../../../components/InputField';
-import { UploadFile } from '../../../../components/UploadFile';
+import { fetchJobDetails } from '../../store/slice/jobDetailsSlice';
+import { InputField } from '../../components/InputField';
+import { UploadFile } from '../../components/UploadFile';
 import { useFormik } from 'formik';
 import {
   initialValues,
   validationSchema,
-} from '../../forms/jobApplicationConfig';
-import { PageError } from '../../../../components/PageError';
+} from '../jobs/forms/jobApplicationConfig';
+import { PageError } from '../../components/PageError';
 import {
   clearApplicationState,
   submitJobApplication,
-} from '../../../../store/slice/jobApplication';
-import { JobApplicationSubmissionSuccess } from './JobSubmissionSucess';
-import { ApplicationFormSectionTitle } from './ApplicationFormSectionTitle';
-import { JobApplicationHeader } from './JobApplicationHeader';
+} from '../../store/slice/jobApplication';
+import { JobApplicationSubmissionSuccess } from './jobApplication/JobSubmissionSucess';
+import { ApplicationFormSectionTitle } from './jobApplication/ApplicationFormSectionTitle';
+import { JobApplicationHeader } from './jobApplication/JobApplicationHeader';
 
 export const JobApplication = () => {
   const navigate = useNavigate();

@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { LoginSignupPage } from './Modules/auth/pages/AuthPage';
 import ProtectRoute from './protectRoute';
 import { Dashboard } from './modules/jobs/Dashboard';
 import { JobPostDetails } from './modules/jobs/JobDetails';
 import GuestRoute from './AuthRoutes';
-import { JobApplication } from './modules/jobs/components/jobApplication/JobApplication';
+import { JobApplication } from './modules/application/JobApplication';
+import { LoginSignupPage } from './modules/auth/AuthPage';
 
 function App() {
   return (

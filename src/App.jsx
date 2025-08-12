@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import ProtectRoute from './protectRoute';
 import { Dashboard } from './modules/jobs/Dashboard';
 import { JobPostDetails } from './modules/jobs/JobDetails';

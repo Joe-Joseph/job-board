@@ -1,0 +1,20 @@
+export const jobFilters = {
+  workStyle: ['Onsite', 'Hybrid', 'Remote'],
+  jobType: ['Full time', 'Part time', 'Internship'],
+  industry: [
+    'Aviation',
+    'Logistics',
+    'Consumer',
+    'Financial',
+    'Healthcare',
+    'Hospitality',
+    'Information Technology',
+    'Internet',
+    'Media & Entertainment',
+    'Not For Profit',
+    'Professional Services',
+    'Retail',
+    'Real Estate',
+    'Telecommunications',
+  ],
+};

@@ -4,6 +4,19 @@
 
 You can access the application [here](https://job-board-iota-flax.vercel.app/)
 
+You can log in with the following credentials
+
+**Email**
+```
+test@test.com
+```
+
+**Password**
+```
+Password1!
+```
+
+
 # Job Board Features
 
 - Authentication
@@ -34,7 +47,7 @@ cd job-board
 2. **Install dependencies**
 
    ```
-   yarn install
+   cp yarn install
    ```
 
 3. **Create an environment file**
@@ -46,10 +59,12 @@ cd job-board
 
 4. **Start the development server**
    ```
-   yarn dev
+   cp yarn dev
    ```
 
 The app should now be running at http://localhost:5173.
+
+Please use the email and password from your .env file to log in
 
 ---
 
@@ -88,25 +103,25 @@ VITE_TOKEN_EXPIRATION_TIME=24h
 To run tests in watch mode:
 
 ```
-yarn test
+cp yarn test
 ```
 
 To open Vitest UI:
 
 ```
-yarn test:ui
+cp yarn test:ui
 ```
 
 To run tests once (for CI):
 
 ```
-yarn test:run
+cp yarn test:run
 ```
 
 To generate a coverage report:
 
 ```
-yarn test:coverage
+cp yarn test:coverage
 ```
 
 ## Architecture note

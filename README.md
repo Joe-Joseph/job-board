@@ -2,7 +2,7 @@
 
 [Job Board Demo](https://www.loom.com/share/6d2e392051a043fe9f09899a2ec79074?sid=bf450705-7440-425d-a5f1-4e5afc90982a)
 
-You can test the application [here](https://job-board-iota-flax.vercel.app/)
+You can access the application [here](https://job-board-iota-flax.vercel.app/)
 
 # Job Board Features
 

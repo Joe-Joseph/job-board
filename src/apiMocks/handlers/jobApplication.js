@@ -1,12 +1,10 @@
 import { http, HttpResponse } from 'msw';
+import { withAuth } from '../../utils/withAuth';
 
 export const jobApplicationHandler = http.post(
   '/api/job/application',
-  async ({ request }) => {
-    // Parse multipart/form-data
+  withAuth(async ({ request }) => {
     const formData = await request.formData();
-
-    console.log('Form data >>>>', formData);
 
     // Basic server-side validation mock
     const requiredFields = [
@@ -32,5 +30,5 @@ export const jobApplicationHandler = http.post(
       },
       { status: 201 }
     );
-  }
+  })
 );

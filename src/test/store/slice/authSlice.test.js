@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer, {
   login,
@@ -11,32 +11,6 @@ import {
   loginCredentials,
   userData,
 } from '../../../apiMocks/data/auth';
-
-// Mock the createApiThunk module
-// vi.mock('../createAsyncThunkWithAuth', () => ({
-//   createApiThunk: (typePrefix, payloadCreator) => {
-//     const { createAsyncThunk } = vi.importActual('@reduxjs/toolkit');
-//     return createAsyncThunk(typePrefix, async (arg, thunkAPI) => {
-//       try {
-//         const config = payloadCreator(arg);
-//         // Mock API call based on the config
-//         if (config.url === '/login') {
-//           if (arg.email === 'test@test.com' && arg.password === 'Password1!') {
-//             return {
-//               token: 'fake-jwt-token',
-//               user: { id: 1, email: 'test@test.com', name: 'Test User' },
-//             };
-//           } else {
-//             return thunkAPI.rejectWithValue({ error: 'Invalid credentials' });
-//           }
-//         }
-//         return {};
-//       } catch (error) {
-//         return thunkAPI.rejectWithValue({ error: error.message });
-//       }
-//     });
-//   },
-// }));
 
 describe('authSlice', () => {
   let store;
@@ -64,7 +38,7 @@ describe('authSlice', () => {
     });
   });
 
-  describe('reducers', () => {
+  describe('slices', () => {
     it('should handle logout', () => {
       const initialState = {
         token: 'some-token',

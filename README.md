@@ -4,7 +4,7 @@
 
 You can access the application [here](https://job-board-iota-flax.vercel.app/)
 
-You can log in with the following credentials
+You can log in with the following credentials:
 
 **Email**
 ```

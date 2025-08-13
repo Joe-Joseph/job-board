@@ -1,11 +1,17 @@
 import { CheckCircle } from 'lucide-react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { clearApplicationState } from '../../../store/slice/jobApplication';
 
 export const JobApplicationSubmissionSuccess = ({ job }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
-    <div className="p-8 text-center bg-white rounded-lg shadow-sm dark:bg-gray-900 dark:border dark:border-gray-800">
+    <div
+      className="p-8 text-center bg-white rounded-lg shadow-sm dark:bg-gray-900 dark:border dark:border-gray-800"
+      data-testid={'successJobApplicationComponent'}
+    >
       <div className="flex justify-center pb-5">
         <div className="relative">
           <div className="flex items-center justify-center w-10 h-10 transition-all duration-500 transform rounded-full shadow-lg bg-gradient-to-r from-emerald-400 to-green-500 hover:scale-110">
@@ -23,7 +29,10 @@ export const JobApplicationSubmissionSuccess = ({ job }) => {
       </p>
       <div className="flex justify-center space-x-4">
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => {
+            dispatch(clearApplicationState());
+            navigate(-1);
+          }}
           className="px-6 py-2 text-sm font-medium text-white transition-colors bg-gray-800 rounded-md cursor-pointer md:w-52 hover:bg-black"
         >
           Back to Job Details

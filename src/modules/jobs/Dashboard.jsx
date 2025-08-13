@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+// eslint-disable-next-line no-unused-vars
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { JobTypeCards } from './components/dashboard/JobTypeCards';
 import {
@@ -98,66 +100,103 @@ export const Dashboard = () => {
         {/* Filter Column */}
         {!filtersError ? (
           <div className="sticky mt-6 max-h-[calc(100vh-5rem)] overflow-y-auto pr-2">
-            {loadingFilters ? (
-              <FilterCardSkeleton />
-            ) : (
-              <FilterCard
-                selectedFilters={filters}
-                onFilterChange={(category, value, checked) => {
-                  dispatch(
-                    setFilters({
-                      ...filters,
-                      [category]: checked
-                        ? [...(filters[category] || []), value]
-                        : (filters[category] || []).filter((v) => v !== value),
-                    })
-                  );
-                }}
-              />
-            )}
+            <AnimatePresence mode="wait">
+              {loadingFilters ? (
+                <motion.div
+                  key="filters-skeleton"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <FilterCardSkeleton />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="filters-content"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <FilterCard
+                    selectedFilters={filters}
+                    onFilterChange={(category, value, checked) => {
+                      dispatch(
+                        setFilters({
+                          ...filters,
+                          [category]: checked
+                            ? [...(filters[category] || []), value]
+                            : (filters[category] || []).filter(
+                                (v) => v !== value
+                              ),
+                        })
+                      );
+                    }}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         ) : null}
 
         {/* Jobs Column */}
         <div className="md:col-span-3">
-          {loadingJobs ? (
-            <JobTypeCardsSkeleton />
-          ) : (
-            <JobTypeCards counts={workStyleCounts} />
-          )}
+          <AnimatePresence mode="wait">
+            {loadingJobs ? (
+              <motion.div
+                key="jobs-skeleton"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <JobTypeCardsSkeleton />
+                <JobCardSkeleton />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="jobs-content"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                <JobTypeCards counts={workStyleCounts} />
 
-          {jobsError ? (
-            <div className="flex items-center justify-center mt-20">
-              <PageError errorMessage={jobsError} />
-            </div>
-          ) : (
-            <>
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                {loadingJobs ? (
-                  <JobCardSkeleton />
+                {jobsError ? (
+                  <div className="flex items-center justify-center mt-20">
+                    <PageError errorMessage={jobsError} />
+                  </div>
                 ) : (
-                  jobs?.map((job) => <JobCard key={job.id} {...job} />)
+                  <>
+                    {jobs.length === 0 && (
+                      <div className="flex items-center justify-center mt-20">
+                        <NotFoundError
+                          title="No jobs found"
+                          description="Try adjusting your filters or search to find what you’re looking for."
+                        />
+                      </div>
+                    )}
+
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                      {jobs?.map((job) => (
+                        <JobCard key={job.id} {...job} />
+                      ))}
+                    </div>
+
+                    {jobs.length > 0 && (
+                      <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={handlePageChange}
+                      />
+                    )}
+                  </>
                 )}
-              </div>
-
-              {!loadingJobs && jobs.length === 0 && (
-                <div className="flex items-center justify-center mt-20">
-                  <NotFoundError
-                    title="No jobs found"
-                    description="Try adjusting your filters or search to find what you’re looking for."
-                  />
-                </div>
-              )}
-
-              {!loadingJobs && jobs.length > 0 && (
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={handlePageChange}
-                />
-              )}
-            </>
-          )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>

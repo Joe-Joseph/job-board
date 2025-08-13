@@ -2,7 +2,10 @@ export const JobCardSkeleton = () => {
   return (
     <>
       {[1, 2, 3, 4].map((card) => (
-        <div key={card} className="flex flex-1 border-gray-100 animate-pulse">
+        <div
+          key={card}
+          className="flex flex-1 my-2 border-gray-100 animate-pulse"
+        >
           <div className="flex flex-col w-full p-6 bg-white border-2 shadow-sm dark:bg-gray-900 rounded-xl dark:border-gray-800">
             {/* Header */}
             <div className="flex items-center justify-between mb-4">

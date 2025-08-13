@@ -1,4 +1,4 @@
-import { CompanyLogo } from '../../../components/CompanyLogo';
+import { CompanyLogo } from '../../../../components/CompanyLogo';
 
 export const JobApplicationHeader = ({ job }) => {
   return (

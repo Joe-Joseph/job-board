@@ -39,27 +39,30 @@ Follow these steps to get the application running locally:
 
 1. **Clone the repository**
 
-````
+```
 git clone https://github.com/Joe-Joseph/job-board.git
+```
+
+```
 cd job-board
-````
+```
 ---
 2. **Install dependencies**
 
    ```
-   cp yarn install
+   yarn install
    ```
 
 3. **Create an environment file**
    Copy the `.env.example` to `.env` and update the values:
 
    ```
-   cp .env.example .env
+   .env.example .env
    ```
 
 4. **Start the development server**
    ```
-   cp yarn dev
+   yarn dev
    ```
 
 The app should now be running at http://localhost:5173.
@@ -103,25 +106,25 @@ VITE_TOKEN_EXPIRATION_TIME=24h
 To run tests in watch mode:
 
 ```
-cp yarn test
+yarn test
 ```
 
 To open Vitest UI:
 
 ```
-cp yarn test:ui
+yarn test:ui
 ```
 
 To run tests once (for CI):
 
 ```
-cp yarn test:run
+yarn test:run
 ```
 
 To generate a coverage report:
 
 ```
-cp yarn test:coverage
+yarn test:coverage
 ```
 
 ## Architecture note

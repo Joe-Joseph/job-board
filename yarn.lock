@@ -1043,6 +1043,11 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
+axios-fetch-adapter@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/axios-fetch-adapter/-/axios-fetch-adapter-1.0.0.tgz#c78693244f0db4b2b200e65c2612b18ccd35af3f"
+  integrity sha512-OuYRqx6XEfeByYatPKAoXRV48id7qmVkXjfTw8rFUHjwM4Yr8UNiihg7FTx9ZowtUWkq/QkzgFAopgnt26h9xA==
+
 axios@^1.11.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.11.0.tgz#c2ec219e35e414c025b2095e8b8280278478fdb6"

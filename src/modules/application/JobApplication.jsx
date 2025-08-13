@@ -237,7 +237,7 @@ export const JobApplication = () => {
                     <button
                       type="button"
                       onClick={() => navigate(-1)}
-                      className="w-full py-2 text-sm font-medium text-gray-700 transition-colors border border-gray-300 rounded-md dark:border-gray-600 dark:text-gray-300 md:w-52 hover:bg-gray-50"
+                      className="w-full py-2 text-sm font-medium text-gray-700 transition-colors border border-gray-300 rounded-md cursor-pointer dark:border-gray-600 dark:text-gray-300 md:w-52 hover:bg-gray-50"
                     >
                       Cancel
                     </button>

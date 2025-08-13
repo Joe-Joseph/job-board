@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+// eslint-disable-next-line no-unused-vars
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { TopBar } from '../../components/TopBar';
 import {
@@ -36,53 +38,72 @@ export const JobPostDetails = () => {
     <>
       <div className="min-h-screen px-5 pb-5 bg-gray-50 dark:bg-gray-900">
         <TopBar />
-        {loading ? (
-          <JobDetailsSkeleton />
-        ) : error ? (
-          <div className="flex items-center justify-center min-h-screen">
-            <PageError errorMessage={error} />
-          </div>
-        ) : !job ? (
-          <div className="flex items-center justify-center min-h-screen">
-            <NotFoundError
-              title="Job not found"
-              description="Try changing the job id or go to job list and select a job."
-            />
-          </div>
-        ) : (
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 gap-6 pt-20 lg:grid-cols-3">
-              {/* Main Content */}
-              <div className="lg:col-span-2">
-                <div className="p-6 bg-white rounded-lg shadow-sm dark:bg-gray-900 dark:border dark:border-gray-800">
-                  {/* Header */}
-                  <JobDetailsHeader job={job} />
-
-                  {/* About this role */}
-                  <AboutTheRole job={job} />
-
-                  {/* Qualification */}
-                  <Qualification job={job} />
-
-                  {/* Responsibility */}
-                  <Responsibilities job={job} />
-                </div>
-              </div>
-
-              {/* Right sidebar */}
-              <div className="space-y-6">
-                {/* Similar Jobs */}
-                <SimilarJobs similarJobs={job?.similarJobs} />
-
-                {/* Other Jobs From the same company */}
-                <JobsFromTheSameCompany
-                  companyJobs={job?.companyJobs}
-                  company={job?.company}
-                />
-              </div>
+        <AnimatePresence mode="wait">
+          {loading ? (
+            <motion.div
+              key="job-skeleton"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <JobDetailsSkeleton />
+            </motion.div>
+          ) : error ? (
+            <div className="flex items-center justify-center min-h-screen">
+              <PageError errorMessage={error} />
             </div>
-          </div>
-        )}
+          ) : !job ? (
+            <div className="flex items-center justify-center min-h-screen">
+              <NotFoundError
+                title="Job not found"
+                description="Try changing the job id or go to job list and select a job."
+              />
+            </div>
+          ) : (
+            <div className="max-w-6xl mx-auto">
+              <motion.div
+                key="job-details"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                className="max-w-6xl mx-auto"
+              >
+                <div className="grid grid-cols-1 gap-6 pt-20 lg:grid-cols-3">
+                  {/* Main Content */}
+                  <div className="lg:col-span-2">
+                    <div className="p-6 bg-white rounded-lg shadow-sm dark:bg-gray-900 dark:border dark:border-gray-800">
+                      {/* Header */}
+                      <JobDetailsHeader job={job} />
+
+                      {/* About this role */}
+                      <AboutTheRole job={job} />
+
+                      {/* Qualification */}
+                      <Qualification job={job} />
+
+                      {/* Responsibility */}
+                      <Responsibilities job={job} />
+                    </div>
+                  </div>
+
+                  {/* Right sidebar */}
+                  <div className="space-y-6">
+                    {/* Similar Jobs */}
+                    <SimilarJobs similarJobs={job?.similarJobs} />
+
+                    {/* Other Jobs From the same company */}
+                    <JobsFromTheSameCompany
+                      companyJobs={job?.companyJobs}
+                      company={job?.company}
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );

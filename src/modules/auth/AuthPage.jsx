@@ -1,9 +1,12 @@
 import { useState } from 'react';
+// eslint-disable-next-line no-unused-vars
+import { motion, AnimatePresence } from 'framer-motion';
+
 import { LeftContent } from './components/LeftContent';
-import { LoginForm } from './components/LoginForm';
 import { ToggleMode } from '../../components/ToggleMode';
 import { SignupForm } from './components/SignupForm';
 import { SignupSuccessCard } from './components/SignupSuccessCard';
+import { LoginForm } from './components/LoginForm';
 
 export const LoginSignupPage = () => {
   const [isSignup, setIsSignup] = useState(false);
@@ -38,22 +41,38 @@ export const LoginSignupPage = () => {
         </div>
 
         <div className="relative w-96 md:w-3/4 h-4/5 my-auto p-8 md:p-16 md:rounded-tr-xs md:rounded-br-xs flex items-center overflow-hidden dark:bg-gray-900 md:bg-white md:shadow-[0px_0px_8px_rgba(2,6,23,0.12),_10px_12px_30px_rgba(2,6,23,0.06)]" />
-        <div className="absolute w-full p-4 bg-white md:-ml-15 md:w-80 dark:bg-gray-900 md:border md:border-gray-100 md:dark:border-gray-800 md:rounded-lg md:p-6 md:shadow-sm">
-          {showSignupSuccess ? (
-            <SignupSuccessCard
-              setIsSignup={setIsSignup}
-              setShowSignupSuccess={setShowSignupSuccess}
-            />
-          ) : isSignup ? (
-            <SignupForm
-              isSignup={isSignup}
-              setIsSignup={setIsSignup}
-              setShowSignupSuccess={setShowSignupSuccess}
-            />
-          ) : (
-            <LoginForm setIsSignup={setIsSignup} isSignup={isSignup} />
-          )}
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            className="absolute w-full p-4 bg-white md:-ml-15 md:w-80 dark:bg-gray-900 md:border md:border-gray-100 md:dark:border-gray-800 md:rounded-lg md:p-6 md:shadow-sm"
+            style={{ perspective: 1000 }}
+            key={
+              showSignupSuccess
+                ? 'signup-success'
+                : isSignup
+                ? 'signup'
+                : 'login'
+            }
+            initial={{ rotateY: 90, opacity: 0 }}
+            animate={{ rotateY: 0, opacity: 1 }}
+            exit={{ rotateY: -90, opacity: 0 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+          >
+            {showSignupSuccess ? (
+              <SignupSuccessCard
+                setIsSignup={setIsSignup}
+                setShowSignupSuccess={setShowSignupSuccess}
+              />
+            ) : isSignup ? (
+              <SignupForm
+                isSignup={isSignup}
+                setIsSignup={setIsSignup}
+                setShowSignupSuccess={setShowSignupSuccess}
+              />
+            ) : (
+              <LoginForm setIsSignup={setIsSignup} isSignup={isSignup} />
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );

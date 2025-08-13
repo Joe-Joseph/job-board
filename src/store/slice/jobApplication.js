@@ -6,10 +6,15 @@ import { createApiThunk } from '../createAsyncThunkWithAuth';
 export const submitJobApplication = createApiThunk(
   'jobApplication/submit',
   (applicationValues) => {
+    const data = new FormData();
+    Object.keys(applicationValues).forEach((key) => {
+      data.append(key, applicationValues[key]);
+    });
+
     return {
       url: '/job/application',
       method: 'POST',
-      data: applicationValues,
+      data,
       headers: {
         'Content-Type': 'multipart/form-data',
       },

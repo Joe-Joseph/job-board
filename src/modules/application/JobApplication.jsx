@@ -1,6 +1,13 @@
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { SquareUser, Mail, MapPin, Link, CheckCircle } from 'lucide-react';
+import {
+  SquareUser,
+  Mail,
+  MapPin,
+  Link,
+  CheckCircle,
+  Loader,
+} from 'lucide-react';
 
 import { TopBar } from '../../components/TopBar';
 import { useDispatch, useSelector } from 'react-redux';
@@ -63,15 +70,10 @@ export const JobApplication = () => {
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      const data = new FormData();
-      Object.keys(values).forEach((key) => {
-        data.append(key, values[key]);
-      });
-
       dispatch(clearApplicationState());
 
       try {
-        await dispatch(submitJobApplication(data)).unwrap();
+        await dispatch(submitJobApplication(values)).unwrap();
       } catch (error) {
         console.log('Error while submitting the application', error);
       }
@@ -244,13 +246,11 @@ export const JobApplication = () => {
                     <button
                       type="submit"
                       className="w-full py-2 text-sm font-medium text-white transition-colors bg-gray-800 rounded-md cursor-pointer md:w-52 hover:bg-black"
+                      data-testid="submitJobApplication"
                     >
                       Submit Application
                       {submittingApplication ? (
-                        <svg
-                          class="mr-3 size-5 animate-spin text-white"
-                          viewBox="0 0 24 24"
-                        ></svg>
+                        <Loader className="animate-spin" />
                       ) : null}
                     </button>
                   </div>

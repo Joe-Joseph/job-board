@@ -2,31 +2,6 @@
 
 [Job Boar Demo](https://www.loom.com/share/6d2e392051a043fe9f09899a2ec79074?sid=bf450705-7440-425d-a5f1-4e5afc90982a)
 
-## Table of Contents
-
-- [Setup](#setup)
-- [Scripts](#scripts)
-- [Environment Variables](#environment-variables)
-- [Running Tests](#running-tests)
-
----
-
-## Setup
-
-Follow these steps to get the application running locally:
-
-1. **Clone the repository**
-
-````bash
-git clone https://github.com/Joe-Joseph/job-board.git
-cd job-board
-
-
-2. **Install dependencies
-
-yarn install
-
-
 # Job Board Features
 
 - Authentication
@@ -34,8 +9,6 @@ yarn install
 - Job details page
 - Application Submission
 
----
-
 ## Table of Contents
 
 - [Setup](#setup)
@@ -50,26 +23,27 @@ yarn install
 Follow these steps to get the application running locally:
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Joe-Joseph/job-board.git
-   cd job-board
-````
 
+````
+git clone https://github.com/Joe-Joseph/job-board.git
+cd job-board
+````
+---
 2. **Install dependencies**
 
-   ```bash
+   ```
    yarn install
    ```
 
 3. **Create an environment file**
    Copy the `.env.example` to `.env` and update the values:
 
-   ```bash
+   ```
    cp .env.example .env
    ```
 
 4. **Start the development server**
-   ```bash
+   ```
    yarn dev
    ```
 
@@ -95,14 +69,6 @@ Here is a summary of the scripts included in this project:
 
 Create a `.env` file in the root of the project with the following variables:
 
-```env
-VITE_LOGIN_EMAIL=
-VITE_LOGIN_PASSWORD=
-VITE_AUTH_TOKEN=
-VITE_SECRET_KEY=
-VITE_TOKEN_EXPIRATION_TIME=
-```
-
 ### .env.example
 
 ```env
@@ -119,30 +85,29 @@ VITE_TOKEN_EXPIRATION_TIME=24h
 
 To run tests in watch mode:
 
-```bash
+```
 yarn test
 ```
 
 To open Vitest UI:
 
-```bash
+```
 yarn test:ui
 ```
 
 To run tests once (for CI):
 
-```bash
+```
 yarn test:run
 ```
 
 To generate a coverage report:
 
-```bash
+```
 yarn test:coverage
 ```
 
-Architecture note
+## Architecture note
 
-```
 The project uses a modular, feature-based React architecture with Redux Toolkit for state management. Components are reusable, and routes are protected via wrapper components. I used MSW for mocking API calls. The app follows a clear separation of concerns, making it scalable and maintainable.
-```
+

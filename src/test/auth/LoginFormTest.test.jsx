@@ -2,8 +2,8 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderWithProviders } from '../mocks/testUtils';
-import { LoginForm } from '../../modules/auth/components/LoginForm';
 import { loginCredentials } from '../../apiMocks/data/auth';
+import { LoginForm } from '../../Modules/auth/components/LoginForm';
 
 // Mock the navigate function
 const mockNavigate = vi.fn();
@@ -28,9 +28,11 @@ describe('LoginForm', () => {
 
   it('renders login form correctly', () => {
     renderWithProviders(<LoginForm {...defaultProps} />);
+    const emailInput = screen.getByTestId('email');
+    const passwordInput = screen.getByTestId('password');
 
-    expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/password/i)).toBeInTheDocument();
+    expect(emailInput).toBeInTheDocument();
+    expect(passwordInput).toBeInTheDocument();
     expect(screen.getByTestId('signin')).toBeInTheDocument();
   });
 
@@ -49,8 +51,7 @@ describe('LoginForm', () => {
   it('shows validation errors for invalid email format', async () => {
     const user = userEvent.setup();
     renderWithProviders(<LoginForm {...defaultProps} />);
-
-    const emailInput = screen.getByLabelText(/email/i);
+    const emailInput = screen.getByTestId('email');
     const submitButton = screen.getByTestId('signin');
 
     await user.type(emailInput, 'invalid-email');
@@ -65,8 +66,8 @@ describe('LoginForm', () => {
     const user = userEvent.setup();
     renderWithProviders(<LoginForm {...defaultProps} />);
 
-    const emailInput = screen.getByLabelText(/email/i);
-    const passwordInput = screen.getByLabelText(/password/i);
+    const emailInput = screen.getByTestId('email');
+    const passwordInput = screen.getByTestId('password');
     const submitButton = screen.getByTestId('signin');
 
     await user.type(emailInput, loginCredentials.email);
@@ -82,8 +83,8 @@ describe('LoginForm', () => {
     const user = userEvent.setup();
     renderWithProviders(<LoginForm {...defaultProps} />);
 
-    const emailInput = screen.getByLabelText(/email/i);
-    const passwordInput = screen.getByLabelText(/password/i);
+    const emailInput = screen.getByTestId('email');
+    const passwordInput = screen.getByTestId('password');
     const submitButton = screen.getByTestId('signin');
 
     await user.type(emailInput, 'wrong@email.com');
@@ -127,8 +128,8 @@ describe('LoginForm', () => {
     const user = userEvent.setup();
     renderWithProviders(<LoginForm {...defaultProps} />);
 
-    const emailInput = screen.getByLabelText(/email/i);
-    const passwordInput = screen.getByLabelText(/password/i);
+    const emailInput = screen.getByTestId('email');
+    const passwordInput = screen.getByTestId('password');
 
     await user.type(emailInput, 'test@example.com');
     await user.type(passwordInput, 'password123');

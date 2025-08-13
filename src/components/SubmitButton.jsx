@@ -1,9 +1,12 @@
+import { Loader } from 'lucide-react';
+
 export const SubmitButton = ({
   icon: Icon,
   isLoading,
   type,
   text,
   handleClick,
+  id,
 }) => {
   return (
     <button
@@ -13,12 +16,11 @@ export const SubmitButton = ({
       onClick={() => {
         type !== 'submit' && handleClick();
       }}
+      id={id}
+      data-testid={id}
     >
       {isLoading ? (
-        <div className="flex items-center justify-center">
-          <div className="w-5 h-5 mr-2 border-2 border-white rounded-full border-t-transparent animate-spin"></div>
-          Signing in...
-        </div>
+        <Loader className="animate-spin" />
       ) : (
         <>
           <span>{text}</span>

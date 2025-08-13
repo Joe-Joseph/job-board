@@ -1,6 +1,4 @@
-import React from 'react';
-
-export const AccountExist = ({ setIsSignup, isSignup }) => {
+export const AccountExist = ({ setIsSignup, isSignup, buttonId }) => {
   return (
     <div className="mt-5 text-center">
       <p className="text-sm text-gray-600">
@@ -9,6 +7,8 @@ export const AccountExist = ({ setIsSignup, isSignup }) => {
           className="font-semibold transition-colors cursor-pointer text-sky-600"
           onClick={setIsSignup}
           type="button"
+          id={buttonId}
+          data-testid={buttonId}
         >
           {isSignup ? 'Sign In' : 'Sign up'}
         </button>

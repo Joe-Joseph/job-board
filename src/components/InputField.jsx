@@ -1,5 +1,5 @@
 import { Eye, EyeOff } from 'lucide-react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ErrorMessage } from './ErrorMessage';
 
 export const InputField = ({
@@ -20,7 +20,7 @@ export const InputField = ({
   return (
     <div className="mt-3">
       <label
-        htmlFor="password"
+        htmlFor={name}
         className="block mb-1 text-xs font-medium text-gray-600 dark:text-gray-400"
       >
         {label}
@@ -37,6 +37,7 @@ export const InputField = ({
           placeholder={placeholder}
           name={name}
           onBlur={onBlur}
+          id={name}
         />
         {inputType === 'password' ? (
           <button

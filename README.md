@@ -111,5 +111,5 @@ yarn test:coverage
 
 ## Architecture note
 
-The project uses a modular, feature-based React architecture with Redux Toolkit for state management. Components are reusable, and routes are protected via wrapper components. I used MSW for mocking API calls. The app follows a clear separation of concerns, making it scalable and maintainable.
+The project uses a modular, feature-based React architecture with Redux Toolkit for state management. Components are reusable, and routes are protected via wrapper components. I used MSW for mocking API calls. The app follows a clear separation of concerns, making it scalable and maintainable. I used TailwindCSS for styling.
 

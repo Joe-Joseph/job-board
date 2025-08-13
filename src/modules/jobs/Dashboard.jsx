@@ -99,7 +99,7 @@ export const Dashboard = () => {
       <div className="grid grid-cols-1 gap-4 pt-16 pb-5 mx-auto max-w-7xl md:grid-cols-4">
         {/* Filter Column */}
         {!filtersError ? (
-          <div className="sticky mt-6 max-h-[calc(100vh-5rem)] overflow-y-auto pr-2">
+          <div className="sticky mt-6 max-h-[calc(100vh-5rem)] pr-2">
             <AnimatePresence mode="wait">
               {loadingFilters ? (
                 <motion.div

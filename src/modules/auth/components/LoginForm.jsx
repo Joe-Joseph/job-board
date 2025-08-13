@@ -66,13 +66,19 @@ export const LoginForm = ({ isSignup, setIsSignup }) => {
       />
 
       {/* Submit Button */}
-      <SubmitButton isLoading={loading} type={'submit'} text={'Sign In'} />
+      <SubmitButton
+        id="signin"
+        isLoading={loading}
+        type={'submit'}
+        text={'Sign In'}
+      />
       <AccountExist
         isSignup={isSignup}
         setIsSignup={() => {
           dispatch(clearError());
           setIsSignup(!isSignup);
         }}
+        buttonId="signupRedirect"
       />
     </form>
   );

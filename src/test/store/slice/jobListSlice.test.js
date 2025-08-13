@@ -4,8 +4,6 @@ import authReducer, { login } from '../../../store/slice/authSlice';
 
 import jobListReducer, {
   setFilters,
-  clearFilters,
-  setPage,
   clearJobsError,
   fetchJobs,
 } from '../../../store/slice/jobListSlice';

@@ -38,6 +38,7 @@ export const InputField = ({
           name={name}
           onBlur={onBlur}
           id={name}
+          data-testid={name}
         />
         {inputType === 'password' ? (
           <button

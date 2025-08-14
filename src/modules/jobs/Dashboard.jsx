@@ -143,7 +143,7 @@ export const Dashboard = () => {
         {/* Jobs Column */}
         <div className="md:col-span-3">
           <AnimatePresence mode="wait">
-            {loadingJobs ? (
+            {loadingJobs || loadingFilters ? (
               <motion.div
                 key="jobs-skeleton"
                 initial={{ opacity: 0 }}
